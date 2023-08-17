@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     public User updateUser(Long userId, UserRequestDTO requestDTO) {
         log.info("UserService.update " + userId + "Request Body: " + requestDTO);
         User user = userRepository.getByIdAndCheck(userId);
-        Optional.ofNullable(requestDTO.getName()).ifPresent(user::setName);
+        Optional.ofNullable(requestDTO.getNickname()).ifPresent(user::setNickname);
         Optional.ofNullable(requestDTO.getDateOfBirth()).ifPresent(user::setDateOfBirth);
         Optional.ofNullable(requestDTO.getEmail()).ifPresent(user::setEmail);
         return userRepository.saveUnique(user);

@@ -4,7 +4,6 @@ import com.basics.DTO.UserRequestDTO;
 import com.basics.DTO.UserResponseDTO;
 import com.basics.mapper.UserMapper;
 import com.basics.service.UserService;
-import com.basics.utils.HashingTool;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

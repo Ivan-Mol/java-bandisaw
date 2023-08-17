@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,9 +24,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String name;
+    private String firstname;
+    private String lastname;
+    private String nickname;
     private String email;
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
+    private String summary;
 
 }

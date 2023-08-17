@@ -3,7 +3,6 @@ package com.basics.mapper;
 import com.basics.DTO.UserRequestDTO;
 import com.basics.DTO.UserResponseDTO;
 import com.basics.model.User;
-import com.basics.utils.HashingTool;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,18 +11,24 @@ import org.springframework.stereotype.Component;
 public class UserMapper {
     public static UserResponseDTO toResponseDto(User user) {
         UserResponseDTO responseDTO = new UserResponseDTO();
-        responseDTO.setId(HashingTool.encode(user.getId()));
-        responseDTO.setName(user.getName());
+        responseDTO.setId(user.getId());
+        responseDTO.setFirstname(user.getFirstname());
+        responseDTO.setLastname(user.getLastname());
+        responseDTO.setNickname(user.getNickname());
         responseDTO.setEmail(user.getEmail());
         responseDTO.setDateOfBirth(user.getDateOfBirth());
+        responseDTO.setSummary(user.getSummary());
         return responseDTO;
     }
 
     public static User requestToUser(UserRequestDTO requestDTO) {
         User user = new User();
-        user.setName(requestDTO.getName());
+        user.setFirstname(requestDTO.getFirstname());
+        user.setLastname(requestDTO.getLastname());
+        user.setNickname(requestDTO.getNickname());
         user.setEmail(requestDTO.getEmail());
         user.setDateOfBirth(requestDTO.getDateOfBirth());
+        user.setSummary(requestDTO.getSummary());
         return user;
     }
 }

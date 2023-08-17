@@ -22,7 +22,7 @@ public class UserServiceImplTest {
     @BeforeEach
     public void beforeEach() {
         correctRequestDto = new UserRequestDTO();
-        correctRequestDto.setName("testName");
+        correctRequestDto.setNickname("testName");
         correctRequestDto.setEmail("test@test.mail.com");
         correctRequestDto.setDateOfBirth(LocalDate.now().minusYears(22));
     }

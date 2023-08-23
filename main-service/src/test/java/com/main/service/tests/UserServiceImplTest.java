@@ -1,6 +1,6 @@
 package com.main.service.tests;
 
-import com.main.DTO.UserRequestDTO;
+import com.main.DTO.user.UserRequestDTO;
 import com.main.exception.ValidationException;
 import com.main.model.User;
 import com.main.service.impl.UserServiceImpl;

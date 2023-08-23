@@ -1,4 +1,4 @@
-package com.main.DAO;
+package com.main.repository;
 
 import com.main.exception.NotFoundException;
 import com.main.exception.ValidationException;

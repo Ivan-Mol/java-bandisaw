@@ -1,7 +1,7 @@
 package com.main.mapper;
 
-import com.main.DTO.UserRequestDTO;
-import com.main.DTO.UserResponseDTO;
+import com.main.DTO.user.UserRequestDTO;
+import com.main.DTO.user.UserResponseDTO;
 import com.main.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

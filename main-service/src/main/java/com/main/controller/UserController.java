@@ -1,7 +1,7 @@
 package com.main.controller;
 
-import com.main.DTO.UserRequestDTO;
-import com.main.DTO.UserResponseDTO;
+import com.main.DTO.user.UserRequestDTO;
+import com.main.DTO.user.UserResponseDTO;
 import com.main.mapper.UserMapper;
 import com.main.service.UserService;
 import jakarta.validation.Valid;

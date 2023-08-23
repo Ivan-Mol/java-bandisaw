@@ -1,7 +1,7 @@
 package com.main.service.impl;
 
-import com.main.DAO.UserRepository;
-import com.main.DTO.UserRequestDTO;
+import com.main.repository.UserRepository;
+import com.main.DTO.user.UserRequestDTO;
 import com.main.mapper.UserMapper;
 import com.main.model.User;
 import com.main.service.UserService;

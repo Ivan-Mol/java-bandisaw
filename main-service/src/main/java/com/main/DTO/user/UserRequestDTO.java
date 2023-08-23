@@ -1,4 +1,4 @@
-package com.main.DTO;
+package com.main.DTO.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;

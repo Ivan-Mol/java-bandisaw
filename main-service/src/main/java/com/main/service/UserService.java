@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.DTO.UserRequestDTO;
+import com.main.DTO.user.UserRequestDTO;
 import com.main.model.User;
 
 public interface UserService {

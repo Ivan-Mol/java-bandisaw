@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="text-center" data-bs-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Home - Bandisaw</title>
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap">
+  <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/bs-theme-overrides.css">
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
+
+<div class="container">
+  <header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a class="nav-link" th:href="@{/views}">View Admin</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Button</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Button</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Button</a></li>
+    </ul>
+  </header>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h4>Users admin /admin/user/</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-1">
+      <a th:href="@{/admin/user/new}" class="btn btn-primary btn-sm mb-3"> create user</a>
+    </div>
+  </div>
+
+  <table class="table table-dark, table-bordered">
+    <thead class="table-dark">
+    <tr>
+      <th>id</th>
+      <th>firstname</th>
+      <th>lastname</th>
+      <th>nickname</th>
+      <th>email</th>
+      <th>about</th>
+      <th>birthdate</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user: ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.firstname}"></td>
+      <td th:text="${user.lastname}"></td>
+      <td th:text="${user.nickname}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.summary}"></td>
+      <td th:text="${user.dateOfBirth}"></td>
+
+      <td>
+        <form th:action="@{/admin/users/edit/{id}(id=${user.id})}">
+          <button class="btn btn-primary">Update</button>
+        </form>
+        <form th:method="delete" th:action="@{/admin/users/{id}(id=${user.id})}">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+
+</html>

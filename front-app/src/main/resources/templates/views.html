@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - Bandisaw</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap">
     <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/bs-theme-overrides.css">
@@ -36,14 +37,14 @@
     </div>
 </nav>
 
-<div class="container" >
+<div class="container">
     <div class="row">
         <h1>Views List</h1>
     </div>
 
-    <div class = "row" >
-        <div class = "col-lg-3">
-            <a th:href = "@{/views/new}" class = "btn btn-primary btn-sm mb-3"> Add View</a>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/views/new}" class="btn btn-primary btn-sm mb-3"> Add View</a>
         </div>
     </div>
 
@@ -61,27 +62,26 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each = "view: ${views}">
-            <td th:text = "${view.id}"></td>
-            <td th:text = "${view.band}"></td>
-            <td th:text = "${view.about}"></td>
-            <td th:text = "${view.rating}"></td>
-            <td th:text = "${view.show}"></td>
-            <td th:text = "${view.genre}"></td>
-            <td th:text = "${view.location}"></td>
+        <tr th:each="view: ${views}">
+            <td th:text="${view.id}"></td>
+            <td th:text="${view.band}"></td>
+            <td th:text="${view.about}"></td>
+            <td th:text="${view.rating}"></td>
+            <td th:text="${view.show}"></td>
+            <td th:text="${view.genre}"></td>
+            <td th:text="${view.location}"></td>
 
             <td>
                 <form th:action="@{/views/edit/{id}(id=${view.id})}">
-                    <button class = "btn btn-primary">Update</button>
+                    <button class="btn btn-primary">Update</button>
                 </form>
                 <form th:method="delete" th:action="@{/views/{id}(id=${view.id})}">
-                    <button class = "btn btn-danger">Delete</button>
+                    <button class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
-
 
 </div>
 </body>

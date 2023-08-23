@@ -1,5 +1,6 @@
 package com.main.service.impl;
 
+import com.main.DTO.user.UserResponseDTO;
 import com.main.repository.UserRepository;
 import com.main.DTO.user.UserRequestDTO;
 import com.main.mapper.UserMapper;
@@ -7,9 +8,13 @@ import com.main.model.User;
 import com.main.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,5 +48,14 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         log.info("UserService.deleteUser " + id);
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<UserResponseDTO> getAll() {
+        return userRepository.
+                findAll(Pageable.ofSize(20))
+                .stream()
+                .map(UserMapper::toResponseDto)
+                .collect(Collectors.toList());
     }
 }

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -54,4 +57,11 @@ public class UserController {
         log.debug("DELETE /user/id=" + id);
         userService.deleteUser(id);
     }
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserResponseDTO> getAllUsers(){
+        log.debug("GET /user/");
+        return userService.getAll();
+    }
+
 }

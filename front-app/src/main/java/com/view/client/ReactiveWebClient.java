@@ -1,21 +1,18 @@
 package com.view.client;
 
 import com.view.DTO.UserRequestDTO;
-import jakarta.validation.Valid;
 
+import com.view.DTO.UserResponseDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.util.retry.Retry;
 
-import java.time.Duration;
-import java.util.Collections;
-import java.util.UUID;
+import java.util.List;
 
 @Component
 @Slf4j
@@ -30,11 +27,16 @@ public class ReactiveWebClient {
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
-    public Mono<UserRequestDTO> sendUserRequestDto(UserRequestDTO userRequestDTO){
+    public Mono<UserRequestDTO> postUserRequestDto(UserRequestDTO userRequestDTO){
         return webClient.post()
                 .uri("/users")
                 .bodyValue(userRequestDTO)
                 .retrieve()
                 .bodyToMono(UserRequestDTO.class);
+    }
+
+    public Flux<UserResponseDTO>  getAllUsers() {
+        return webClient.get().uri("/users")
+                .retrieve().bodyToFlux(UserResponseDTO.class);
     }
 }

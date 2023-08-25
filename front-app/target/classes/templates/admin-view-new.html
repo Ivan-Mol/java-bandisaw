@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/bs-theme-overrides.css">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav class="navbar bg-secondary align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark"
+         style="background: var(--bs-link-color);--bs-primary: #7b6e4d;--bs-primary-rgb: 123,110,77;">
+        <div class="container-fluid d-flex flex-column p-0"><a
+                class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+            <div class="sidebar-brand-icon rotate-n-15"></div>
+            <div class="sidebar-brand-text mx-3"><span>Bandsisaw</span></div>
+        </a>
+            <hr class="sidebar-divider my-0">
+            <ul class="navbar-nav text-light" id="accordionSidebar">
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Stats</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="profile.html"><i
+                        class="fas fa-user"></i><span>Profile</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/admin/users"><i class="fas fa-table"></i><span>Table users</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="/admin/views"><i class="fas fa-table"></i><span>Table views</span></a>
+                </li>
+                <li class="nav-item"></li>
+                <li class="nav-item"><a class="nav-link" href="admin-user.html"><i class="fas fa-table"></i><span>Table bands</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login out</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div class="bg-black" id="content"
+             style="color: rgb(27,27,27);--bs-primary: #7b6e4d;--bs-primary-rgb: 123,110,77;">
+            <nav class="navbar navbar-expand bg-dark shadow mb-4 topbar static-top navbar-light"
+                 style="background: var(--bs-success);color: var(--bs-secondary);">
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"
+                            style="color: var(--bs-btn-active-color);"></button>
+                </div>
+            </nav>
+            <div class="container-fluid" style="padding-bottom: 74px;">
+                <h3 class="text-light mb-4"><strong>Create View</strong></h3>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                        <div class="card-body">
+                            <form th:action="@{/admin/views}" th:object="${view}" method="POST">
+                                <div class="form-group">
+                                    <label style="font-weight:bold"> Band </label>
+                                    <input
+                                            type="text"
+                                            name="band"
+                                            th:field="*{band}"
+                                            class="form-control"
+                                            placeholder="Enter Band Name"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="font-weight:bold"> About </label>
+                                    <input
+                                            type="text"
+                                            name="about"
+                                            th:field="*{about}"
+                                            class="form-control"
+                                            placeholder="Enter info about the show"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="font-weight:bold"> Rating </label>
+                                    <input
+                                            type="text"
+                                            name="rating"
+                                            th:field="*{rating}"
+                                            class="form-control"
+                                            placeholder="Enter rating from 1 to 5"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-weight:bold"> Show </label>
+                                    <input
+                                            type="text"
+                                            name="show"
+                                            th:field="*{show}"
+                                            class="form-control"
+                                            placeholder="Enter the show name"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-weight:bold"> Genre </label>
+                                    <input
+                                            type="text"
+                                            name="genre"
+                                            th:field="*{genre}"
+                                            class="form-control"
+                                            placeholder="Select genre"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-weight:bold"> Location </label>
+                                    <input
+                                            type="text"
+                                            name="location"
+                                            th:field="*{location}"
+                                            class="form-control"
+                                            placeholder="Enter location"
+                                    />
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary" style="margin-top:20px">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="bg-dark sticky-footer"
+                style="color: var(--bs-emphasis-color);background: var(--bs-info-text-emphasis);">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span class="text-light">Copyright © Bandisaw 2023</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a class="d-inline scroll-to-top" href="#page-top" style="border-radius: 5px;"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/theme.js"></script>
+</body>
+
+</html>

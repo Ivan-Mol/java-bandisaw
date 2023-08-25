@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="text-center" data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Bandisaw</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav" style="background: #141414;">
+        <div class="container"><a class="navbar-brand" href="#">Bandisaw</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item nav-link"><a class="nav-link" href="#download">registration</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link" href="#card">SIGN in</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link active" href="#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background-image:url('intro-bg.jpg');">
+        <div class="intro-body" style="background: url(&quot;assets/img/intro-bg.webp&quot;);background-size: cover;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">Bandisaw</h1>
+                        <p class="intro-text" style="background: var(--bs-secondary-color);">GIG COLLECTOR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="text-center content-section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>About BANDisaw</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="text-center download-section content-section" id="download" style="background-image:url('assets/img/downloads-bg.jpg');">
+        <div class="container">
+            <section class="position-relative py-4 py-xl-5">
+                <div class="container position-relative">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                            <div class="card mb-5">
+                                <div class="card-body p-sm-5">
+                                    <h2 class="text-center mb-4">Registration</h2>
+                                    <form method="post" th:object="${userRequestDTO}">
+                                        <div class="mb-3"><input class="form-control" type="text" id="firstname" name="firstname" placeholder="firstname" inputmode="latin" minlength="2" maxlength="50" required=""></div>
+                                        <div class="mb-3"><input class="form-control" type="text" id="lastname" name="lastname" placeholder="lastname" minlength="2" maxlength="50" inputmode="latin-name" required=""></div>
+                                        <div class="mb-3"><input class="form-control" type="text" id="nickname" name="nickname" placeholder="nickname" minlength="2" maxlength="50" inputmode="latin-name" required=""></div>
+                                        <div class="mb-3"><input class="form-control" type="email" id="email" name="email" placeholder="email" inputmode="email" required=""></div>
+                                        <div class="mb-3"><input class="form-control" type="text" id="info" name="about" placeholder="about" maxlength="512" inputmode="latin"></div>
+                                        <div class="mb-3"><input class="form-control" type="date" id="birthdate" name="birthdate" placeholder="Date of birth" pattern="dd.MM.yyyy"></div>
+                                        <div><button class="btn btn-primary d-block w-100" type="submit">Send </button></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <section class="text-center content-section" id="contact"></section>
+    <div class="map-clean"></div>
+    <footer>
+        <div class="container text-center">
+            <p>Copyright ©&nbsp;Bandisaw 2023</p>
+        </div>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bandisaw.js"></script>
+</body>
+
+</html>

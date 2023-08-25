@@ -1,6 +1,7 @@
 package com.view.controller;
 
 import com.view.DTO.UserRequestDTO;
+import com.view.DTO.UserResponseDTO;
 import com.view.service.UserReactiveService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import reactor.core.publisher.Mono;
-
-import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,10 +27,10 @@ public class MainController {
     @PostMapping(value = "/")
     public Mono<String> postUserData(Model model, @ModelAttribute UserRequestDTO userRequestDTO) {
         log.info("request: {}", userRequestDTO);
-        return userReactiveService.sendUserRequest(userRequestDTO)
+        return userReactiveService.sendUserRequest("/users", userRequestDTO)
                 .doOnNext(u -> log.info("response: {}", u))
                 .doOnError(e -> log.error("error: {}", e.getMessage()))
-                .onErrorReturn(new UserRequestDTO())
+                .onErrorReturn(new UserResponseDTO())
                 .map(any -> "index");
     }
 }

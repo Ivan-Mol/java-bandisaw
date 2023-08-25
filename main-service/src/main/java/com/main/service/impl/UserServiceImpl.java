@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +38,7 @@ public class UserServiceImpl implements UserService {
         log.info("UserService.update " + userId + "Request Body: " + requestDTO);
         User user = userRepository.getByIdAndCheck(userId);
         Optional.ofNullable(requestDTO.getNickname()).ifPresent(user::setNickname);
-        Optional.ofNullable(requestDTO.getDateOfBirth()).ifPresent(user::setDateOfBirth);
+        Optional.ofNullable(requestDTO.getBirthdate()).ifPresent(user::setBirthdate);
         Optional.ofNullable(requestDTO.getEmail()).ifPresent(user::setEmail);
         return userRepository.saveUnique(user);
     }

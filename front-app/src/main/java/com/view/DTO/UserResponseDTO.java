@@ -13,8 +13,8 @@ public class UserResponseDTO {
     private String lastname;
     private String nickname;
     private String email;
-    private LocalDate dateOfBirth;
-    private String summary;
+    private String about;
+    private LocalDate birthdate;
 
     public Long getId() {
         return id;

@@ -27,19 +27,18 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="profile.html"><i
                         class="fas fa-user"></i><span>Profile</span></a></li>
-                <li class="nav-item"><a class="nav-link active" href="/admin/users"><i
-                        class="fas fa-table"></i><span>Table users</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="/admin/views"><i class="fas fa-table"></i><span>Table views</span></a>
+                <li class="nav-item"><a class="nav-link" href="/admin/users"><i class="fas fa-table"></i><span>Table users</span></a>
                 </li>
+                <li class="nav-item"><a class="nav-link active" href="/admin/views"><i
+                        class="fas fa-table"></i><span>Table views</span></a></li>
                 <li class="nav-item"></li>
-                <li class="nav-item"><a class="nav-link" href="admin-user.html"><i
-                        class="fas fa-table"></i><span>Table bands</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="admin-user.html"><i class="fas fa-table"></i><span>Table bands</span></a>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login out</span></a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a>
                 </li>
             </ul>
-
         </div>
     </nav>
     <div class="d-flex flex-column" id="content-wrapper">
@@ -53,13 +52,13 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-light mb-4"><strong>Users</strong></h3>
+                <h3 class="text-light mb-4"><strong>Views</strong></h3>
                 <div class="card shadow">
-                    <div class="card-header bg-primary d-lg-flex justify-content-lg-start align-items-lg-start py-3"
+                    <div class="card-header bg-primary py-3"
                          style="background: var(--bs-body-bg);--bs-primary: #7b6e4d;--bs-primary-rgb: 123,110,77;">
                         <td>
-                            <form th:action="@{/admin/users/new}">
-                                <button class="btn btn-success d-lg-flex"><strong>Create User</strong></button>
+                            <form th:action="@{/admin/views/new}">
+                                <button class="btn btn-success d-lg-flex"><strong>Create View</strong></button>
                             </form>
                         </td>
                     </div>
@@ -82,57 +81,57 @@
                                                                   placeholder="Search"></label></div>
                             </div>
                         </div>
-                        <div id="dataTable" class="table-responsive table mt-2" role="grid"
+                        <div id="viewTable" class="table-responsive table mt-2" role="grid"
                              aria-describedby="dataTable_info">
                             <table class="table my-0">
                                 <thead>
                                 <tr>
                                     <th class="text-light bg-secondary">id</th>
-                                    <th class="text-light bg-secondary">firstname</th>
-                                    <th class="text-light bg-secondary">lastname</th>
-                                    <th class="text-light bg-secondary">nickname</th>
-                                    <th class="text-light bg-secondary">email</th>
+                                    <th class="text-light bg-secondary">band</th>
                                     <th class="text-light bg-secondary">about</th>
-                                    <th class="text-light bg-secondary">birthdate</th>
+                                    <th class="text-light bg-secondary">rating</th>
+                                    <th class="text-light bg-secondary">show</th>
+                                    <th class="text-light bg-secondary">genre</th>
+                                    <th class="text-light bg-secondary">location</th>
                                     <th class="text-light bg-secondary">Actions</th>
                                     <th class="text-bg-light bg-secondary"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="user: ${users}">
-                                    <td th:text="${user.id}"></td>
-                                    <td th:text="${user.firstname}"></td>
-                                    <td th:text="${user.lastname}"></td>
-                                    <td th:text="${user.nickname}"></td>
-                                    <td th:text="${user.email}"></td>
-                                    <td th:text="${user.about}"></td>
-                                    <td th:text="${user.birthdate}"></td>
-
+                                <tr th:each="view: ${views}">
+                                    <td th:text="${view.id}"></td>
+                                    <td th:text="${view.band}"></td>
+                                    <td th:text="${view.about}"></td>
+                                    <td th:text="${view.rating}"></td>
+                                    <td th:text="${view.show}"></td>
+                                    <td th:text="${view.genre}"></td>
+                                    <td th:text="${view.location}"></td>
                                     <td>
-                                        <form th:action="@{/admin/users/update/{id}(id=${user.id})}">
-                                            <button class="btn btn-warning"><strong>Update</strong>
+                                        <form th:action="@{/admin/views/update/{id}(id=${view.id})}">
+                                            <button class="btn btn-warning" type="submit"><strong>Update</strong>
                                             </button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form th:method="post" th:action="@{/admin/users/del/{id}(id=${user.id})}">
+                                        <form th:method="post" th:action="@{/admin/views/del/{id}(id=${view.id})}">
                                             <button class="btn btn-danger" type="submit"><strong>Delete</strong>
                                             </button>
                                         </form>
 
                                     </td>
+
                                 </tr>
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th class="text-light bg-secondary">id</th>
-                                    <th class="text-light bg-secondary">firstname</th>
-                                    <th class="text-light bg-secondary">lastname</th>
-                                    <th class="text-light bg-secondary">nickname</th>
-                                    <th class="text-light bg-secondary">email</th>
-                                    <th class="text-light bg-secondary">about</th>
-                                    <th class="text-light bg-secondary">birthdate</th>
-                                    <th class="text-light bg-secondary">Actions</th>
+                                    <td class="text-light bg-secondary"><strong>id</strong></td>
+                                    <td class="text-light bg-secondary"><strong>band</strong></td>
+                                    <td class="text-light bg-secondary"><strong>about</strong></td>
+                                    <td class="text-light bg-secondary"><strong>rating</strong></td>
+                                    <td class="text-light bg-secondary"><strong>show</strong></td>
+                                    <td class="text-light bg-secondary"><strong>genre</strong></td>
+                                    <td class="text-light bg-secondary"><strong>location</strong></td>
+                                    <td class="text-light bg-secondary"><strong>Actions</strong></td>
                                     <td class="text-bg-light bg-secondary"></td>
                                 </tr>
                                 </tfoot>
@@ -175,7 +174,6 @@
     <a class="d-inline scroll-to-top" href="#page-top" style="border-radius: 5px;"><i class="fas fa-angle-up"></i></a>
 </div>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/bs-init.js"></script>
 <script src="assets/js/theme.js"></script>
 </body>
 

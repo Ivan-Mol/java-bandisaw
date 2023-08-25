@@ -6,52 +6,59 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class ViewController {
+
+public class AdminViewController {
     private final ViewService viewService;
 
-    @GetMapping("/views")
+    @GetMapping("/admin/views")
     public String getViews(Model model) {
         model.addAttribute("views", viewService.getAllViews());
-        return "views";
+        log.debug("GET /admin/views");
+        return "admin-view";
     }
 
-    @GetMapping("/views/new")
+    @GetMapping("/admin/views/new")
     public String createView(Model model) {
         ViewRequestDTO viewRequestDTO = new ViewRequestDTO();
         model.addAttribute("view", viewRequestDTO);
-        return "create_view";
-
+        log.debug("GET /admin/views/new ");
+        return "admin-view-new";
     }
 
-    @PostMapping("/views")
+    @PostMapping("/admin/views")
     public String saveView(@ModelAttribute("view") ViewRequestDTO viewRequestDTO) {
+        log.debug("POST /admin/views ");
         viewService.saveView(viewRequestDTO);
-        return "redirect:/views";
+        return "redirect:/admin/views";
     }
 
-    @GetMapping("/views/edit/{id}")
-    public String editView(@PathVariable Long id, Model model) {
+    @GetMapping("/admin/views/update/{id}")
+    public String updateView(@PathVariable Long id, Model model) {
         model.addAttribute("view", viewService.getById(id));
-        return "edit_view";
+        log.debug("GET /admin/views/update/ " + id);
+        return "admin-view-update";
     }
 
-    @PostMapping("/views/{id}")
+    @PostMapping("/admin/views/{id}")
     public String updateView(@PathVariable Long id,
                              @ModelAttribute("view") ViewRequestDTO viewRequestDTO,
                              Model model) {
-
         viewService.updateView(id, viewRequestDTO);
-        return "redirect:/views";
+        return "redirect:/admin/views";
     }
 
-    @DeleteMapping("/views/{id}")
-    public String deleteView(@PathVariable Long id) {
+    //TODO Html is not support method: DELETE
+    @PostMapping("/admin/views/del/{id}")
+    public String deleteView(@PathVariable Long id, Model model) {
         viewService.deleteView(id);
-        return "redirect:/views";
+        return "redirect:/admin/views";
     }
 }

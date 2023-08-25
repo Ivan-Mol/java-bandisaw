@@ -43,16 +43,17 @@ public class ViewServiceImpl implements ViewService {
         ViewRequestDTO v = getById(id);
         viewRequests.remove(v);
     }
-    public ViewRequestDTO getById(Long id){
-        for (ViewRequestDTO v:viewRequests) {
-            if (v.getId().equals(id)){
+
+    public ViewRequestDTO getById(Long id) {
+        for (ViewRequestDTO v : viewRequests) {
+            if (v.getId().equals(id)) {
                 return v;
             }
         }
         return null;
     }
 
-    public ViewRequestDTO updateView(Long id,ViewRequestDTO view){
+    public ViewRequestDTO updateView(Long id, ViewRequestDTO view) {
 
         ViewRequestDTO viewRequestDTO = getById(id);
         viewRequestDTO.setId(id);

@@ -16,12 +16,27 @@ public class UserReactiveServiceImpl implements UserReactiveService {
     private final ReactiveWebClient reactiveWebClient;
 
     @Override
-    public Mono<UserRequestDTO> sendUserRequest(UserRequestDTO userRequestDTO) {
-        return reactiveWebClient.postUserRequestDto(userRequestDTO);
+    public Mono<UserResponseDTO> sendUserRequest(String uri, UserRequestDTO userRequestDTO) {
+        return reactiveWebClient.postUserRequestDto(uri, userRequestDTO);
     }
 
     @Override
-    public Flux<UserResponseDTO> getAllViews() {
+    public Flux<UserResponseDTO> getAllUsers() {
         return reactiveWebClient.getAllUsers();
+    }
+
+    @Override
+    public void sendDeleteByIdRequest(String uri, Long id) {
+        reactiveWebClient.sendDeleteByIdRequest(uri, id);
+    }
+
+    @Override
+    public Mono<UserResponseDTO> sendGetByIdRequest(String uri, Long id) {
+        return reactiveWebClient.sendGetByIdRequest(uri, id);
+    }
+
+    @Override
+    public Mono<UserResponseDTO> sendPostRequest(String url, UserRequestDTO userRequestDTO) {
+        return reactiveWebClient.postUserRequestDto(url, userRequestDTO);
     }
 }

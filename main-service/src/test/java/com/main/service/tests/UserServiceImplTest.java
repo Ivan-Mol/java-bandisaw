@@ -24,7 +24,7 @@ public class UserServiceImplTest {
         correctRequestDto = new UserRequestDTO();
         correctRequestDto.setNickname("testName");
         correctRequestDto.setEmail("test@test.mail.com");
-        correctRequestDto.setDateOfBirth(LocalDate.now().minusYears(22));
+        correctRequestDto.setBirthdate(LocalDate.now().minusYears(22));
     }
 
     @Test

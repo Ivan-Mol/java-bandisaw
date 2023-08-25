@@ -11,6 +11,6 @@ public class UserResponseDTO {
     private String lastname;
     private String nickname;
     private String email;
-    private LocalDate dateOfBirth;
-    private String summary;
+    private LocalDate birthdate;
+    private String about;
 }

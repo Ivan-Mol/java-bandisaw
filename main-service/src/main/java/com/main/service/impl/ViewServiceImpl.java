@@ -52,7 +52,7 @@ public class ViewServiceImpl implements ViewService {
         if (user.getId().equals(view.getAuthor().getId())) {
             viewRepository.deleteById(sawId);
         } else {
-            throw new ValidationException("User is not Saw's owner");
+            throw new ValidationException("User is not View's owner");
         }
     }
 }

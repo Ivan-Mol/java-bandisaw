@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Getter
 @Setter
-@Table(name = "Saws")
+@Table(name = "Views")
 public class View {
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")

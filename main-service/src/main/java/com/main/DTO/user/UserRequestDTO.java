@@ -22,7 +22,7 @@ public class UserRequestDTO {
     @Email(message = "email is not correct")
     String email;
     @JsonFormat(pattern = "dd.MM.yyyy")
-    LocalDate dateOfBirth;
+    LocalDate birthdate;
     @Size(max = 512)
-    String summary;
+    String about;
 }

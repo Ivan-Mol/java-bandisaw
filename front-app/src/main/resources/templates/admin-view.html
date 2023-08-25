@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/bs-theme-overrides.css">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav class="navbar bg-secondary align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark"
+         style="background: var(--bs-link-color);--bs-primary: #7b6e4d;--bs-primary-rgb: 123,110,77;">
+        <div class="container-fluid d-flex flex-column p-0"><a
+                class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+            <div class="sidebar-brand-icon rotate-n-15"></div>
+            <div class="sidebar-brand-text mx-3"><span>Bandisaw</span></div>
+        </a>
+            <hr class="sidebar-divider my-0">
+            <ul class="navbar-nav text-light" id="accordionSidebar">
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Stats</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="profile.html"><i
+                        class="fas fa-user"></i><span>Profile</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/admin/users"><i class="fas fa-table"></i><span>Table users</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="/admin/views"><i
+                        class="fas fa-table"></i><span>Table views</span></a></li>
+                <li class="nav-item"></li>
+                <li class="nav-item"><a class="nav-link" href="admin-user.html"><i class="fas fa-table"></i><span>Table bands</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login out</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div class="bg-black" id="content"
+             style="color: rgb(27,27,27);--bs-primary: #7b6e4d;--bs-primary-rgb: 123,110,77;">
+            <nav class="navbar navbar-expand bg-dark shadow mb-4 topbar static-top navbar-light"
+                 style="background: var(--bs-success);color: var(--bs-secondary);">
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"
+                            style="color: var(--bs-btn-active-color);"></button>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <h3 class="text-light mb-4"><strong>Views</strong></h3>
+                <div class="card shadow">
+                    <div class="card-header bg-primary py-3"
+                         style="background: var(--bs-body-bg);--bs-primary: #7b6e4d;--bs-primary-rgb: 123,110,77;">
+                        <td>
+                            <form th:action="@{/admin/views/new}">
+                                <button class="btn btn-success d-lg-flex"><strong>Create View</strong></button>
+                            </form>
+                        </td>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label
+                                        class="form-label">Show&nbsp;<select
+                                        class="d-inline-block form-select form-select-sm">
+                                    <option value="10" selected="">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>&nbsp;</label></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end dataTables_filter" id="dataTable_filter"><label
+                                        class="form-label"><input type="search" class="form-control form-control-sm"
+                                                                  aria-controls="dataTable"
+                                                                  placeholder="Search"></label></div>
+                            </div>
+                        </div>
+                        <div id="viewTable" class="table-responsive table mt-2" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0">
+                                <thead>
+                                <tr>
+                                    <th class="text-light bg-secondary">id</th>
+                                    <th class="text-light bg-secondary">band</th>
+                                    <th class="text-light bg-secondary">about</th>
+                                    <th class="text-light bg-secondary">rating</th>
+                                    <th class="text-light bg-secondary">show</th>
+                                    <th class="text-light bg-secondary">genre</th>
+                                    <th class="text-light bg-secondary">location</th>
+                                    <th class="text-light bg-secondary">Actions</th>
+                                    <th class="text-bg-light bg-secondary"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="view: ${views}">
+                                    <td th:text="${view.id}"></td>
+                                    <td th:text="${view.band}"></td>
+                                    <td th:text="${view.about}"></td>
+                                    <td th:text="${view.rating}"></td>
+                                    <td th:text="${view.show}"></td>
+                                    <td th:text="${view.genre}"></td>
+                                    <td th:text="${view.location}"></td>
+                                    <td>
+                                        <form th:action="@{/admin/views/update/{id}(id=${view.id})}">
+                                            <button class="btn btn-warning" type="submit"><strong>Update</strong>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form th:method="post" th:action="@{/admin/views/del/{id}(id=${view.id})}">
+                                            <button class="btn btn-danger" type="submit"><strong>Delete</strong>
+                                            </button>
+                                        </form>
+
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td class="text-light bg-secondary"><strong>id</strong></td>
+                                    <td class="text-light bg-secondary"><strong>band</strong></td>
+                                    <td class="text-light bg-secondary"><strong>about</strong></td>
+                                    <td class="text-light bg-secondary"><strong>rating</strong></td>
+                                    <td class="text-light bg-secondary"><strong>show</strong></td>
+                                    <td class="text-light bg-secondary"><strong>genre</strong></td>
+                                    <td class="text-light bg-secondary"><strong>location</strong></td>
+                                    <td class="text-light bg-secondary"><strong>Actions</strong></td>
+                                    <td class="text-bg-light bg-secondary"></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing
+                                    1 to 10 of 27</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled"><a class="page-link" aria-label="Previous"
+                                                                          href="#"><span aria-hidden="true">«</span></a>
+                                        </li>
+                                        <li class="page-item fw-normal active"
+                                            style="--bs-success: #ecc769;--bs-success-rgb: 236,199,105;"><a
+                                                class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span
+                                                aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-dark sticky-footer"
+                style="color: var(--bs-emphasis-color);background: var(--bs-info-text-emphasis);">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span class="text-light">Copyright © Bandisaw 2023</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a class="d-inline scroll-to-top" href="#page-top" style="border-radius: 5px;"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/theme.js"></script>
+</body>
+
+</html>

@@ -28,7 +28,7 @@ public class User {
     private String nickname;
     private String email;
     @JsonFormat(pattern = "dd.MM.yyyy")
-    private LocalDate dateOfBirth;
-    private String summary;
+    private LocalDate birthdate;
+    private String about;
 
 }

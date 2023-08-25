@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -28,14 +31,14 @@ public class UserController {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponseDTO createUser(@RequestBody @Valid UserRequestDTO requestDTO) {
-        log.debug("POST /users/ BODY: " + requestDTO.toString());
+        log.debug("POST/users/ BODY: " + requestDTO.toString());
         return UserMapper.toResponseDto(userService.createUser(requestDTO));
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserResponseDTO getUserById(@PathVariable(value = "id") Long id) {
-        log.debug("GET /users/id=" + id);
+        log.debug("GET/users/id=" + id);
 
         return UserMapper.toResponseDto(userService.getUser(id));
     }
@@ -44,14 +47,21 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserResponseDTO updateUser(@PathVariable(value = "id") Long id,
                                       @RequestBody UserRequestDTO requestDTO) {
-        log.debug("PATCH /user/id=" + id);
+        log.debug("PATCH/user/id=" + id);
         return UserMapper.toResponseDto(userService.updateUser(id, requestDTO));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable(value = "id") Long id) {
-        log.debug("DELETE /user/id=" + id);
+        log.debug("DELETE/user/id=" + id);
         userService.deleteUser(id);
     }
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserResponseDTO> getAllUsers(){
+        log.debug("GET/user/");
+        return userService.getAll();
+    }
+
 }

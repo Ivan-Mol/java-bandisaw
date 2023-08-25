@@ -25,6 +25,7 @@ The main service in which the main functions of applications are implemented
 
 Front API
 Contains html templates and a reactive WebClient for interacting the main service.
+
 Screens: 
 
 Main page:

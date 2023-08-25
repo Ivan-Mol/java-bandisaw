@@ -26,10 +26,7 @@ public class MainController {
 
     @PostMapping(value = "/")
     public Mono<String> postUserData(Model model, @ModelAttribute UserRequestDTO userRequestDTO) {
-        log.info("request: {}", userRequestDTO);
-        return userReactiveService.sendUserRequest("/users", userRequestDTO)
-                .doOnNext(u -> log.info("response: {}", u))
-                .doOnError(e -> log.error("error: {}", e.getMessage()))
+        return userReactiveService.createUser(userRequestDTO)
                 .onErrorReturn(new UserResponseDTO())
                 .map(any -> "index");
     }

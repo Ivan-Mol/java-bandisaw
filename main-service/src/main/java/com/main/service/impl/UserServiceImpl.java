@@ -37,10 +37,13 @@ public class UserServiceImpl implements UserService {
     public User updateUser(Long userId, UserRequestDTO requestDTO) {
         log.info("UserService.update " + userId + "Request Body: " + requestDTO);
         User user = userRepository.getByIdAndCheck(userId);
+        Optional.ofNullable(requestDTO.getFirstname()).ifPresent(user::setFirstname);
+        Optional.ofNullable(requestDTO.getLastname()).ifPresent(user::setLastname);
         Optional.ofNullable(requestDTO.getNickname()).ifPresent(user::setNickname);
-        Optional.ofNullable(requestDTO.getBirthdate()).ifPresent(user::setBirthdate);
+        Optional.ofNullable(requestDTO.getAbout()).ifPresent(user::setAbout);
         Optional.ofNullable(requestDTO.getEmail()).ifPresent(user::setEmail);
-        return userRepository.saveUnique(user);
+        Optional.ofNullable(requestDTO.getBirthdate()).ifPresent(user::setBirthdate);
+        return userRepository.save(user);
     }
 
     @Override

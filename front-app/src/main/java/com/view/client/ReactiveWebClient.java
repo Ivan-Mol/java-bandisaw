@@ -2,6 +2,7 @@ package com.view.client;
 
 import com.view.DTO.UserRequestDTO;
 import com.view.DTO.UserResponseDTO;
+import com.view.service.UserReactiveService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -12,48 +13,54 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class ReactiveWebClient {
-    private final String MAIN_API_URI = "http://localhost:8081";
+public class ReactiveWebClient implements UserReactiveService {
+
+    private static final String USERS_URI = "/users";
     private final WebClient webClient;
 
     public ReactiveWebClient() {
         this.webClient = WebClient.builder()
-                .baseUrl(MAIN_API_URI)
-                //.defaultCookie("cookieKey", "cookieValue")
+                .baseUrl("http://localhost:8081")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
 
-    public Mono<UserResponseDTO> postUserRequestDto(String uri, UserRequestDTO userRequestDTO) {
-        System.out.println(userRequestDTO);
+    public Mono<UserResponseDTO> createUser(UserRequestDTO userRequestDTO) {
         return webClient
                 .post()
-                .uri(uri)
-                .contentType(MediaType.APPLICATION_JSON)
+                .uri(USERS_URI)
                 .bodyValue(userRequestDTO)
                 .retrieve()
                 .bodyToMono(UserResponseDTO.class);
     }
 
-    public Flux<UserResponseDTO> getAllUsers() {
+    public Flux<UserResponseDTO> getUsers() {
         return webClient
                 .get()
-                .uri("/users")
-                .retrieve().bodyToFlux(UserResponseDTO.class);
+                .uri(USERS_URI)
+                .retrieve()
+                .bodyToFlux(UserResponseDTO.class);
     }
 
-    public void sendDeleteByIdRequest(String uri, Long id) {
-        System.out.println("delete request with " + uri + " and Id " + id);
-        webClient.delete()
-                .uri("/users/" + id)
-                .retrieve().bodyToMono(Void.class).subscribe();
+    public Mono<Void> deleteUser(long id) {
+        return webClient.delete()
+                .uri(USERS_URI + "/" + id)
+                .retrieve()
+                .bodyToMono(Void.class);
     }
 
-    public Mono<UserResponseDTO> sendGetByIdRequest(String uri, Long id) {
-        System.out.println("get request with " + uri + " and Id " + id);
+    public Mono<UserResponseDTO> updateUser(Long id,UserRequestDTO userRequestDTO) {
+        return webClient
+                .patch()
+                .uri(USERS_URI+"/"+id)
+                .bodyValue(userRequestDTO)
+                .retrieve()
+                .bodyToMono(UserResponseDTO.class);
+    }
+
+    public Mono<UserResponseDTO> getUser(long id) {
         return webClient.get()
-                .uri("/users")
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .uri(USERS_URI + "/" + id)
                 .retrieve()
                 .bodyToMono(UserResponseDTO.class);
     }

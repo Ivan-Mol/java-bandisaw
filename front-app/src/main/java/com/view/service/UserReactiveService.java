@@ -6,13 +6,12 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UserReactiveService {
-    Mono<UserResponseDTO> sendUserRequest(String uri, UserRequestDTO userRequestDTO);
+    Mono<UserResponseDTO> createUser(UserRequestDTO userRequestDTO);
 
-    Flux<UserResponseDTO> getAllUsers();
+    Flux<UserResponseDTO> getUsers();
 
-    void sendDeleteByIdRequest(String uri, Long id);
+    Mono<Void> deleteUser(long id);
 
-    Mono<UserResponseDTO> sendGetByIdRequest(String uri, Long id);
-
-    Mono<UserResponseDTO> sendPostRequest(String url, UserRequestDTO userRequestDTO);
+    Mono<UserResponseDTO> getUser(long id);
+    public Mono<UserResponseDTO> updateUser(Long id, UserRequestDTO userRequestDTO);
 }

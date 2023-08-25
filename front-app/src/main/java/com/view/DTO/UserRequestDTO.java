@@ -11,11 +11,11 @@ import java.time.LocalDate;
 @Setter
 @Getter
 public class UserRequestDTO {
-    @JsonFormat(pattern = "yyyy.MM.dd")
-    LocalDate birthdate;
     private String firstname;
     private String lastname;
     private String nickname;
     private String email;
     private String about;
+    @JsonFormat(pattern = "dd.MM.yyyy")
+    LocalDate birthdate;
 }

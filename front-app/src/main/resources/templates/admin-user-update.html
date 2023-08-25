@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Table - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/bs-theme-overrides.css">
 </head>
 
 <body id="page-top">
@@ -16,14 +16,14 @@
         <nav class="navbar bg-secondary align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" style="background: var(--bs-link-color);--bs-primary: #7b6e4d;--bs-primary-rgb: 123,110,77;">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"></div>
-                    <div class="sidebar-brand-text mx-3"><span>Bandsisaw</span></div>
+                    <div class="sidebar-brand-text mx-3"><span>Bandisaw</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Stats</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-user.html"><i class="fas fa-table"></i><span>Table users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-view-new.html"><i class="fas fa-table"></i><span>Table views</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/users"><i class="fas fa-table"></i><span>Table users</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/views"><i class="fas fa-table"></i><span>Table views</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="admin-user.html"><i class="fas fa-table"></i><span>Table bands</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login out</span></a></li>
@@ -38,16 +38,17 @@
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button" style="color: var(--bs-btn-active-color);"></button></div>
                 </nav>
                 <div class="container-fluid" style="padding-bottom: 74px;">
-                    <h3 class="text-light mb-4"><strong>Update View</strong></h3><div class = "container">
+                    <h3 class="text-light mb-4"><strong>Update User</strong></h3><div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <div class = "card-body">
-                <form th:action="@{/users/{id} (id=${user.id})}" th:object = "${user}" method="POST">
+                <form th:action="@{/admin/users/{id} (id=${user.id})}" th:object = "${user}" method="POST">
                    <div class="form-group">
                     <label style="font-weight:bold"> Firstname </label>
                     <input
                             type="text"
                             name="firstname"
+                            required="required"
                             th:field="*{firstname}"
                             class="form-control"
                             placeholder="Enter your firstname"
@@ -59,6 +60,7 @@
                     <input
                             type="text"
                             name="lastname"
+                            required="required"
                             th:field="*{lastname}"
                             class="form-control"
                             placeholder="Enter your lastname"
@@ -70,6 +72,7 @@
                     <input
                             type="text"
                             name="nickname"
+                            required="required"
                             th:field="*{nickname}"
                             class="form-control"
                             placeholder="Enter the nickname"
@@ -80,6 +83,7 @@
                 <input
                         type="text"
                         name="email"
+                        required="required"
                         th:field="*{email}"
                         class="form-control"
                         placeholder="Enter your email"
@@ -90,6 +94,7 @@
                 <input
                         type="text"
                         name="about"
+                        required="required"
                         th:field="*{about}"
                         class="form-control"
                         placeholder="Something about you"
@@ -101,6 +106,7 @@
                         type="date"
                         pattern="dd.MM.yyyy"
                         name="birthdate"
+                        required="required"
                         th:field="*{birthdate}"
                         class="form-control"
                         placeholder="Enter location"

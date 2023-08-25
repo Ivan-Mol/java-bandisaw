@@ -47,6 +47,7 @@
                     <input
                             type="text"
                             name="firstname"
+                            required="required"
                             th:field="*{firstname}"
                             class="form-control"
                             placeholder="Enter your firstname"
@@ -58,6 +59,7 @@
                     <input
                             type="text"
                             name="lastname"
+                            required="required"
                             th:field="*{lastname}"
                             class="form-control"
                             placeholder="Enter your lastname"
@@ -69,6 +71,7 @@
                     <input
                             type="text"
                             name="nickname"
+                            required="required"
                             th:field="*{nickname}"
                             class="form-control"
                             placeholder="Enter the nickname"
@@ -79,6 +82,7 @@
                 <input
                         type="text"
                         name="email"
+                        required="required"
                         th:field="*{email}"
                         class="form-control"
                         placeholder="Enter your email"
@@ -89,6 +93,7 @@
                 <input
                         type="text"
                         name="about"
+                        required="required"
                         th:field="*{about}"
                         class="form-control"
                         placeholder="Something about you"
@@ -100,6 +105,7 @@
                         type="date"
                         pattern="dd.MM.yyyy"
                         name="birthdate"
+                        required="required"
                         th:field="*{birthdate}"
                         class="form-control"
                         placeholder="Enter location"

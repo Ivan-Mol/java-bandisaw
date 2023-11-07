@@ -28,12 +28,12 @@ Contains html templates and a reactive WebClient for interacting the main servic
 Screens: 
 
 Main page:
-![img_3.png](img_3.png)
+![img_3.png](readme-pics/img_3.png)
 Registration form:
-![img_4.png](img_4.png)
+![img_4.png](readme-pics/img_4.png)
 Admin's forms:
-![img.png](img.png)
+![img.png](readme-pics/img.png)
 
-![img_2.png](img_2.png)
+![img_2.png](readme-pics/img_2.png)
 
-![img_1.png](img_1.png)
+![img_1.png](readme-pics/img_1.png)

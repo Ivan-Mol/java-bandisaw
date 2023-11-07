@@ -19,7 +19,7 @@ public class View {
     User author;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @Column(name = "view_id", nullable = false)
     private Long id;
     private String band;
     private String about;

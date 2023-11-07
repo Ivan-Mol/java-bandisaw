@@ -10,14 +10,11 @@ import java.time.LocalDate;
 
 @Data
 public class UserRequestDTO {
-    @NotBlank(message = "first name is too short or too long")
-    @Size(min = 2, max = 30)
-    private String firstname;
-    @NotBlank(message = "last name is too short or too long")
-    @Size(min = 2, max = 30)
-    private String lastname;
-    @NotBlank(message = "name is too short or too long")
-    @Size(min = 3, max = 30)
+    @NotBlank(message = "Name is too short or too long")
+    @Size(min = 2, max = 70)
+    private String name;
+    @NotBlank(message = "Nickname is too short or too long")
+    @Size(min = 3, max = 40)
     String nickname;
     @Email(message = "email is not correct")
     String email;

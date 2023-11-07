@@ -23,8 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String firstname;
-    private String lastname;
+    private String name;
     private String nickname;
     private String email;
     @JsonFormat(pattern = "dd.MM.yyyy")
